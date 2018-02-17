@@ -31,19 +31,16 @@ class GuestBook extends Component {
   }
   render() {
     
-    // const { guestBooks } = this.state
+    const { guestComments } = this.state
 
-    // const GuestBookComponents = guestBooks.map((guestComment) => {
-    //   return <GuestComment key = {guestComment.id} {...guestComment}/>;
-    // })
+    const GuestBookComponents = guestComments.map((guestComment) => {
+      return <GuestComments key = {guestComment.id} {...guestComment}/>;
+    })
 
     return (
       <div>
           <h1>Keanu's GuestBook</h1>
-          {/* <ul>{GuestBookComponents}</ul> */}
-          <GuestComments title = "My thoughts on Keanu" author = "Yeezy" content = "Keanu is handsome"/>
-          <GuestComments title = "My experience with Keanu" author = "SunJing" content = "Keanu is reliable"/>
-          <GuestComments title = "Where do I begin?" author = "Drake" content = "words cannot describe him"/>
+          {GuestBookComponents}
       </div>
     );
   }
