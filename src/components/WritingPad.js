@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as GuestBookActions from '../actions/GuestBookActions';
-
+import uuid4 from 'uuid/v4'
 
 class WritingPad extends Component {
   constructor(){
@@ -11,7 +11,7 @@ class WritingPad extends Component {
   }
 
   postComment(){
-    var id = 4 // change for dynamic later
+    var id = uuid4() // generate random using uuid4
     var author = document.getElementById("author_name").value
     var title = document.getElementById("comment_title").value
     var content = document.getElementById("comment_content").value
