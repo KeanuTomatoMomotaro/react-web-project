@@ -43,7 +43,6 @@ class GuestBookStores extends EventEmitter {
       if(index > -1){
         this.guestComments.splice(index, 1)
       }
-      console.log(this.guestComments)
       this.emit("change")
     }
 
