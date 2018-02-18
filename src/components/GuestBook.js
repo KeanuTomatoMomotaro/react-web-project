@@ -34,7 +34,7 @@ class GuestBook extends Component {
     return (
       <div>
           <h1>Keanu's GuestBook</h1>
-          <button onClick = {this.createComment.bind(this)}>Create Comment</button>
+          {/* <button onClick = {this.createComment.bind(this)}>Create Comment</button> */}
           {GuestBookComponents}
       </div>
     );
