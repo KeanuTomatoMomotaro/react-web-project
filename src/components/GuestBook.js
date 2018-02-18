@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GuestComments from './GuestComments';
+import WritingPad from './WritingPad';
 import GuestBookStores from '../stores/GuestBookStores';
 import * as GuestBookActions from '../actions/GuestBookActions';
 
@@ -36,6 +37,7 @@ class GuestBook extends Component {
           <h1>Keanu's GuestBook</h1>
           {/* <button onClick = {this.createComment.bind(this)}>Create Comment</button> */}
           {GuestBookComponents}
+          <WritingPad />
       </div>
     );
   }
