@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import * as GuestBookActions from '../actions/GuestBookActions';
+
 
 class GuestComments extends Component {
   constructor(){
@@ -7,6 +9,11 @@ class GuestComments extends Component {
         
     }
   }
+
+  deleteComment(id){
+    GuestBookActions.deleteGuestComment(id)
+  }
+
   render() {
     
     return (
@@ -23,7 +30,7 @@ class GuestComments extends Component {
                         <td>Content: {this.props.content}</td>
                     </tr>
                     <tr>
-                        <td />
+                        <td><button onClick = {(id)=>this.deleteComment(this.props.id)}>delete</button></td>
                     </tr>
                 </tbody>
             </table>
