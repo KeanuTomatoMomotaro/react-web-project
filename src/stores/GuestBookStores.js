@@ -38,6 +38,15 @@ class GuestBookStores extends EventEmitter {
       this.emit("change")
     }
 
+    deleteGuestComment(id){
+      var index = this.guestComments.map(function(e) {return e.id}).indexOf(id)
+      if(index > -1){
+        this.guestComments.splice(index, 1)
+      }
+      console.log(this.guestComments)
+      this.emit("change")
+    }
+
     getAllGuestComments(){
         return this.guestComments
     }
@@ -47,6 +56,12 @@ class GuestBookStores extends EventEmitter {
         case "CREATE_GUEST_COMMENT" : 
         
           this.createGuestComment(action.id, action.author, action.title, action.content)
+        
+        break;
+
+        case "DELETE_GUEST_COMMENT" : 
+        
+          this.deleteGuestComment(action.id)
         
         break;
 
