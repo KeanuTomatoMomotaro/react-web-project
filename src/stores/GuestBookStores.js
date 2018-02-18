@@ -1,5 +1,7 @@
 import { EventEmitter } from 'events';
 
+import dispatcher from '../Dispatcher/dispatcher';
+
 class GuestBookStores extends EventEmitter {
     constructor(){
         super()
@@ -39,8 +41,23 @@ class GuestBookStores extends EventEmitter {
     getAllGuestComments(){
         return this.guestComments
     }
+
+    handleAction(action){
+      switch (action.type){
+        case "CREATE_GUEST_COMMENT" : 
+        
+          this.createGuestComment(action.id, action.author, action.title, action.content)
+        
+        break;
+
+        default:
+        
+        break;
+      }
+    }
 }
 
 const guestBookStore = new GuestBookStores()
-window.guestBookStore = guestBookStore
+dispatcher.register(guestBookStore.handleAction.bind(guestBookStore))
+window.dispatcher = dispatcher
 export default guestBookStore
