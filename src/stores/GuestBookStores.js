@@ -25,11 +25,22 @@ class GuestBookStores extends EventEmitter {
           ]
     }
 
+    createGuestComment( id, author, title, content){
+      this.guestComments.push({
+        id,
+        author,
+        title,
+        content
+      })
+
+      this.emit("change")
+    }
+
     getAllGuestComments(){
         return this.guestComments
     }
 }
 
-const guestBookStore = new GuestBookStores
-
+const guestBookStore = new GuestBookStores()
+window.guestBookStore = guestBookStore
 export default guestBookStore

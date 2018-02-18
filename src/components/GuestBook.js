@@ -10,6 +10,15 @@ class GuestBook extends Component {
       guestComments: GuestBookStores.getAllGuestComments()
     }
   }
+
+  componentWillMount(){
+    GuestBookStores.on("change", () => {
+      this.setState({
+        guestComments: GuestBookStores.getAllGuestComments()
+      })
+    })
+  }
+
   render() {
     
     const { guestComments } = this.state
