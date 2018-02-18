@@ -74,5 +74,4 @@ class GuestBookStores extends EventEmitter {
 
 const guestBookStore = new GuestBookStores()
 dispatcher.register(guestBookStore.handleAction.bind(guestBookStore))
-window.dispatcher = dispatcher
 export default guestBookStore
