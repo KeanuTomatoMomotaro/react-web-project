@@ -6,15 +6,17 @@ class WritingPad extends Component {
   constructor(){
     super()
     this.state = {
-        
+        author_name : "",
+        comment_title : "",
+        comment_content : "",
     }
   }
 
   postComment(){
     var id = uuid4() // generate random using uuid4
-    var author = document.getElementById("author_name").value
-    var title = document.getElementById("comment_title").value
-    var content = document.getElementById("comment_content").value
+    var author = this.state.author_name
+    var title = this.state.comment_title
+    var content = this.state.comment_content
 
     GuestBookActions.createGuestComment(id, author, title, content)
   }
@@ -26,11 +28,11 @@ class WritingPad extends Component {
           <h1>Write New Comment Here </h1>
           <form>
               <label htmlFor = "author_name">Author Name: </label>
-              <input type="text" name = "authorName" id = "author_name"/><br/>
+              <input type="text" name = "authorName" id = "author_name" onChange = {(event) => this.setState({author_name : event.target.value})}/><br/>
               <label htmlFor = "comment_title">Comment Title: </label>              
-              <input type="text" name = "commentTitle" id = "comment_title"/><br/>
+              <input type="text" name = "commentTitle" id = "comment_title" onChange = {(event) => this.setState({comment_title : event.target.value})}/><br/>
               <label htmlFor = "comment_content">Comments: </label><br/>              
-              <textarea name = "commentContent" id = "comment_content" /><br />
+              <textarea name = "commentContent" id = "comment_content" onChange = {(event) => this.setState({comment_content : event.target.value})}/><br />
           </form>
           <button onClick = {() => this.postComment()}>Post New Comment</button>
       </div>
