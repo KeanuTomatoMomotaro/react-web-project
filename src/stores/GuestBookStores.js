@@ -5,9 +5,7 @@ import dispatcher from '../Dispatcher/dispatcher';
 class GuestBookStores extends EventEmitter {
     constructor(){
         super()
-        this.guestComments = [
-            
-          ]
+        this.guestComments = []
     }
 
     createGuestComment( id, author, title, content){
@@ -29,7 +27,18 @@ class GuestBookStores extends EventEmitter {
     }
 
     getAllGuestComments(){
+      fetch("http://localhost:8000/get-all-guest-comments")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            this.guestComments = result
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
         return this.guestComments
+                        
     }
 
     handleAction(action){

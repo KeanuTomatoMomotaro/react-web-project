@@ -21,6 +21,7 @@ class GuestBook extends Component {
 
   render() {
     
+    console.log(this.state.guestComments)
     const { guestComments } = this.state
 
     const GuestBookComponents = guestComments.map((guestComment) => {
