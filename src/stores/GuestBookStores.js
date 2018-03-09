@@ -55,6 +55,12 @@ class GuestBookStores extends EventEmitter {
         
         break;
 
+        case "GET_GUEST_COMMENT" : 
+        
+          this.getAllGuestComment()
+        
+        break;
+
         default:
         
         break;
