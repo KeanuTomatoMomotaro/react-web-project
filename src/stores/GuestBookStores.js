@@ -10,10 +10,10 @@ class GuestBookStores extends EventEmitter {
 
     createGuestComment( id, author, title, content){
       this.guestComments.push({
-        id,
-        author,
-        title,
-        content
+        "id":id,
+        "comment_author":author,
+        "comment_title":title,
+        "comment_content":content
       })
       this.emit("change")
     }
