@@ -5,17 +5,15 @@ import dispatcher from '../Dispatcher/dispatcher';
 class GuestBookStores extends EventEmitter {
     constructor(){
         super()
-        this.guestComments = [
-            
-          ]
+        this.guestComments = []
     }
 
     createGuestComment( id, author, title, content){
       this.guestComments.push({
-        id,
-        author,
-        title,
-        content
+        "id":id,
+        "comment_author":author,
+        "comment_title":title,
+        "comment_content":content
       })
       this.emit("change")
     }
@@ -29,7 +27,18 @@ class GuestBookStores extends EventEmitter {
     }
 
     getAllGuestComments(){
+      fetch("http://localhost:8000/get-all-guest-comments")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            this.guestComments = result
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
         return this.guestComments
+                        
     }
 
     handleAction(action){
@@ -43,6 +52,12 @@ class GuestBookStores extends EventEmitter {
         case "DELETE_GUEST_COMMENT" : 
         
           this.deleteGuestComment(action.id)
+        
+        break;
+
+        case "GET_GUEST_COMMENT" : 
+        
+          this.getAllGuestComment()
         
         break;
 

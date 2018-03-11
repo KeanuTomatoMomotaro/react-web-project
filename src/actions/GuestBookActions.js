@@ -16,3 +16,9 @@ export function deleteGuestComment( cId ){
         id: cId,
     })
 }
+
+export function getGuestComment(){
+    dispatcher.dispatch({
+        type: "GET_GUEST_COMMENT",
+    })
+}

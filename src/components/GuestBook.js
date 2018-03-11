@@ -21,10 +21,11 @@ class GuestBook extends Component {
 
   render() {
     
+    console.log(this.state.guestComments)
     const { guestComments } = this.state
 
     const GuestBookComponents = guestComments.map((guestComment) => {
-      return <GuestComments key = {guestComment.id} {...guestComment}/>;
+      return <GuestComments key = {guestComment.id} title = {guestComment.comment_title} author = {guestComment.comment_author} content = {guestComment.comment_content}/>;
     })
 
     return (
