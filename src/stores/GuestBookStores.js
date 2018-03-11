@@ -9,6 +9,20 @@ class GuestBookStores extends EventEmitter {
     }
 
     createGuestComment( id, author, title, content){
+      fetch('http://localhost:8000/post-new-comment', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: id,
+          author: author,
+          title: title,
+          content: content,
+        }),
+      });
+      
       this.guestComments.push({
         "id":id,
         "comment_author":author,
