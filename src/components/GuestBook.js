@@ -7,8 +7,7 @@ class GuestBook extends Component {
   constructor(){
     super()
     this.state = {
-      // guestComments: GuestBookStores.getAllGuestComments()
-      guestComments: []
+      guestComments: GuestBookStores.getAllGuestComments()
     }
   }
 
@@ -25,6 +24,14 @@ class GuestBook extends Component {
             console.log(error)
           }
         )
+  }
+
+  componentDidMount(){
+    GuestBookStores.on('change', () => {
+      this.setState({
+        guestComments: GuestBookStores.getAllGuestComments()
+      })
+    })
   }
 
   render() {
