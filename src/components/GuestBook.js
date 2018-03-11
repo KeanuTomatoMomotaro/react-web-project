@@ -7,16 +7,24 @@ class GuestBook extends Component {
   constructor(){
     super()
     this.state = {
-      guestComments: GuestBookStores.getAllGuestComments()
+      // guestComments: GuestBookStores.getAllGuestComments()
+      guestComments: []
     }
   }
 
   componentWillMount(){
-    GuestBookStores.on("change", () => {
-      this.setState({
-        guestComments: GuestBookStores.getAllGuestComments()
-      })
-    })
+    fetch("http://localhost:8000/get-all-guest-comments")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              guestComments: result
+            })
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
   }
 
   render() {
